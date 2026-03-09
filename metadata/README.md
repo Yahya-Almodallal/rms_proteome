@@ -1,12 +1,14 @@
 # Metadata Folder
 
-This folder stores machine-readable snapshots of repository files.
+This folder stores reproducible metadata artifacts.
 
-- `files_manifest.tsv`: one row per file with hash + size + modified time.
-- `files_metadata.json`: same data in JSON format for scripting.
+## Pre-download manifest (remote inventory)
 
-Regenerate with:
+- `download_manifest_pxd039480.tsv`: file list from PRIDE before download.
+- `download_manifest_pxd039480.json`: same information in JSON format.
+
+Generate with:
 
 ```bash
-python3 scripts/00_build_manifest.py --root . --outdir metadata
+python3 scripts/01_build_predownload_manifest_pxd039480.py --project PXD039480 --outdir metadata
 ```

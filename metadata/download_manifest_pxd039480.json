@@ -1,0 +1,73 @@
+{
+  "generated_utc": "2026-03-09T14:28:26.193915+00:00",
+  "source": "PRIDE Archive API v2",
+  "project_accession": "PXD039480",
+  "record_count": 5,
+  "records": [
+    {
+      "project_accession": "PXD039480",
+      "file_name": "20210720_MQout_AT.zip",
+      "file_size_bytes": 2112353273,
+      "checksum": "7c882483570aa2ea2d22d1304a8eafea7d60a7ed",
+      "checksum_type": "sha1",
+      "ftp_url": "ftp://ftp.pride.ebi.ac.uk/pride/data/archive/2023/03/PXD039480/20210720_MQout_AT.zip",
+      "aspera_url": "prd_ascp@fasp.ebi.ac.uk:pride/data/archive/2023/03/PXD039480/20210720_MQout_AT.zip",
+      "file_category": "RAW",
+      "submission_date": "2023-01-16T21:35:18.535+00:00",
+      "publication_date": "2023-03-11T18:56:33.895+00:00",
+      "updated_date": "2023-01-16T21:35:18.535+00:00"
+    },
+    {
+      "project_accession": "PXD039480",
+      "file_name": "20210720_MQres_AT.xlsx",
+      "file_size_bytes": 69648310,
+      "checksum": "e57d48da8f90e953ae4f4a21b4f04c8d46dbef9f",
+      "checksum_type": "sha1",
+      "ftp_url": "ftp://ftp.pride.ebi.ac.uk/pride/data/archive/2023/03/PXD039480/20210720_MQres_AT.xlsx",
+      "aspera_url": "prd_ascp@fasp.ebi.ac.uk:pride/data/archive/2023/03/PXD039480/20210720_MQres_AT.xlsx",
+      "file_category": "OTHER",
+      "submission_date": "2023-01-16T21:35:18.535+00:00",
+      "publication_date": "2023-03-11T18:56:33.895+00:00",
+      "updated_date": "2023-01-16T21:35:18.535+00:00"
+    },
+    {
+      "project_accession": "PXD039480",
+      "file_name": "checksum.txt",
+      "file_size_bytes": 418,
+      "checksum": "d803df2fe56f52bba7a3a6a343626f6418b4598e",
+      "checksum_type": "sha1",
+      "ftp_url": "ftp://ftp.pride.ebi.ac.uk/pride/data/archive/2023/03/PXD039480/checksum.txt",
+      "aspera_url": "prd_ascp@fasp.ebi.ac.uk:pride/data/archive/2023/03/PXD039480/checksum.txt",
+      "file_category": "OTHER",
+      "submission_date": "2023-01-16T21:35:18.535+00:00",
+      "publication_date": "2023-03-11T18:56:33.895+00:00",
+      "updated_date": "2023-01-16T21:35:18.535+00:00"
+    },
+    {
+      "project_accession": "PXD039480",
+      "file_name": "contaminantsfasta.sec",
+      "file_size_bytes": 149706,
+      "checksum": "830c65e42adb86dd488672c26f942255af6a721d",
+      "checksum_type": "sha1",
+      "ftp_url": "ftp://ftp.pride.ebi.ac.uk/pride/data/archive/2023/03/PXD039480/contaminantsfasta.sec",
+      "aspera_url": "prd_ascp@fasp.ebi.ac.uk:pride/data/archive/2023/03/PXD039480/contaminantsfasta.sec",
+      "file_category": "OTHER",
+      "submission_date": "2023-01-16T21:35:18.535+00:00",
+      "publication_date": "2023-03-11T18:56:33.895+00:00",
+      "updated_date": "2023-01-16T21:35:18.535+00:00"
+    },
+    {
+      "project_accession": "PXD039480",
+      "file_name": "SProt_HomoSapiens_cano_iso_2021_04fasta.sec",
+      "file_size_bytes": 29117637,
+      "checksum": "1be3d369ec25f293024d3c1babe9321ee13f9a38",
+      "checksum_type": "sha1",
+      "ftp_url": "ftp://ftp.pride.ebi.ac.uk/pride/data/archive/2023/03/PXD039480/SProt_HomoSapiens_cano_iso_2021_04fasta.sec",
+      "aspera_url": "prd_ascp@fasp.ebi.ac.uk:pride/data/archive/2023/03/PXD039480/SProt_HomoSapiens_cano_iso_2021_04fasta.sec",
+      "file_category": "SEARCH",
+      "submission_date": "2023-01-16T21:35:18.535+00:00",
+      "publication_date": "2023-03-11T18:56:33.895+00:00",
+      "updated_date": "2023-01-16T21:35:18.535+00:00"
+    }
+  ]
+}

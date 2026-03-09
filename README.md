@@ -6,7 +6,7 @@ Reproducible proteomics workflow starter for rhabdomyosarcoma (RMS) analysis.
 
 1. Download and organize data for ProteomeXchange dataset `PXD039480`.
 2. Quantify evidence for `MYMK`, `MYMX`, and additional proteins encoded by genes listed in `ann.genes.sheets.csv`.
-3. Keep full provenance (file manifest + metadata) from day zero.
+3. Keep full provenance (pre-download file manifest + metadata) from day zero.
 
 ## Why this skeleton
 
@@ -29,11 +29,11 @@ The review in `review.txt` prioritizes:
 
 ```bash
 git init
-python3 scripts/00_build_manifest.py --root . --outdir metadata
+python3 scripts/01_build_predownload_manifest_pxd039480.py --project PXD039480 --outdir metadata
 ```
 
 ## Next immediate steps
 
-1. Build sample sheet for `PXD039480` in `metadata/samples.pxd039480.tsv`.
-2. Add a data download script with a dry-run mode.
+1. Review `metadata/download_manifest_pxd039480.tsv` before download.
+2. Build sample sheet for `PXD039480` in `metadata/samples.pxd039480.tsv`.
 3. Add first extraction script for MYMK/MYMX peptide/protein hits.
