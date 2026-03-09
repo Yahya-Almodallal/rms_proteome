@@ -1,0 +1,344 @@
+Public proteomics workflows and datasets to evaluate MYMK and MYMX in rhabdomyosarcoma versus normal skeletal muscle
+Executive summary
+Public proteomics resources can support a reproducible comparison of MYMK (myomaker) and MYMX (myomixer) abundance between rhabdomyosarcoma (RMS) models and normal skeletal muscle, but the strategy must be tailored to the biology of these targets. MYMX is an 84–aa transmembrane microprotein (very small, hydrophobic), which makes it systematically under-detected by standard shotgun proteomics and especially hard to quantify across cohorts. 
+ MYMK is a membrane fusogen (myoblast-fusion factor), likewise challenging for conventional bulk proteomics because hydrophobic, low-abundance, and often represented by few proteotypic tryptic peptides. 
+
+For a practical, high-confidence workflow, the best starting point is to prioritize datasets that include RMS models and relevant normal muscle controls in the same experiment (minimizes batch effects) and/or membrane/surface-enriched workflows (higher odds of observing MYMK/MYMX peptides). The single most directly usable public dataset matching that profile is PXD039480, a surfaceome/membrane-enrichment proteomics study of multiple fusion-positive and fusion-negative RMS cell lines and PDXs with primary human myoblasts as controls, deposited to ProteomeXchange. 
+
+To extend beyond a single study and benchmark RMS cell lines broadly, the most useful large-scale resource is CCLE deep mass-spec proteomics (TMT) in MassIVE MSV000085836 (375 cell lines), plus DepMap transcriptomics for RNA–protein concordance. 
+ For normal skeletal muscle “ground truth,” PXD011967 (vastus lateralis biopsies from healthy participants; proteomics cohort includes 58 donors) and PXD034908 (SWATH time course in 18 healthy young men) provide widely-used muscle references, but cross-study comparisons require careful normalization and batch correction and are rarely reliable for single low-abundance membrane proteins. 
+
+Curated public datasets for RMS, RMS cell lines, and normal skeletal muscle proteomes
+The table below is curated for practical re-use for MYMK/MYMX, emphasizing: (i) raw file availability, (ii) inclusion of RMS vs normal muscle controls, and (iii) workflows likely to detect membrane proteins.
+
+Candidate datasets for RMS and normal muscle comparisons
+Accession / ID	Repository	Sample types relevant to RMS vs normal	Assay layer	Raw files	RMS samples (approx.)	Normal muscle / controls (approx.)	Notes for MYMK/MYMX-specific work
+PXD039480 
+ProteomeXchange/PRIDE	11 RMS cell lines (includes RD, Rh30) + 3 RMS PDXs; controls include primary human myoblasts and MRC-5 fibroblasts; experiments in triplicate 
+Membrane/surface-enriched (“surfaceome”) LC–MS; iTop3-style quantification in paper 
+Yes	11 lines + 3 PDX (× triplicates) 
+Primary myoblasts + fibroblast control (× triplicates) 
+Best single dataset for MYMK/MYMX because enrichment improves odds of observing transmembrane targets; includes fusion-stratified cell lines and PDXs 
+PXD035131 
+ProteomeXchange (hosted at jPOST)	Fusion-positive alveolar RMS models under ATR pathway perturbations (paper-associated) 
+(Phospho-)proteomics (phosphorylated residues listed) 
+Yes	Study-specific	None (not a muscle-control study)	Valuable mainly for pathway context; phosphoproteomics is not optimal for MYMK/MYMX unless peptides exist in dataset
+MSV000086494 
+MassIVE	FP-RMS-focused proteomics from “BAF complexes drive proliferation…”; SEC-IP-MS deposited 
+Interaction/IP-MS style proteomics (SEC-IP-MS) 
+Partial (MassIVE note: may be peak lists) 
+Study-specific	None	Not designed for target quantification; useful for RMS proteomics practice and reanalysis plumbing
+PXD052488 
+ProteomeXchange/PRIDE	Pediatric RMS plasma proteomics: ERMS (n=18), ARMS (n=17), healthy controls (n=18) 
+Untargeted plasma proteomics (plus metabolomics in paper) 
+Yes (many .raw files listed) 
+35 plasma cases 
+18 plasma controls 
+Biomarker-style; MYMK/MYMX are membrane fusogens and unlikely to be robustly detectable in plasma (still worth checking peptide evidence if reported)
+PXD042840 
+ProteomeXchange/PRIDE	“Human rhabdomyosarcoma cells” (cell-culture proteome under infection/perturbation context per OmicsDI) 
+Whole proteome (label-free)	Yes	Study-specific	None	Useful as a testbed for extracting MYMK/MYMX peptides from a typical RD-like workflow; context may confound biological interpretation
+MSV000085836 
+MassIVE	CCLE deep mass-spec proteomes: 375 cancer cell lines (includes many sarcoma lineages) 
+Whole proteome; TMT 10-plex + SPS-MS3 acquisition 
+Yes	Depends on which RMS lines are included in the 375 set	None	Excellent for broad cell-line benchmarking; requires mapping cell line IDs and lineage annotations to RMS; TMT improves completeness but MYMX may still be absent
+PXD030304 
+ProteomeXchange (Sanger DepMap proteomics)	ProCan-DepMapSanger: pan-cancer proteomics across DepMap/Sanger cell models (documentation) 
+Whole proteome (raw .wiff) 
+Yes	Large (pan-cancer; check which RMS lines present in processed tables)	None	High-coverage cell-line proteomics at scale; use processed tables first, then raw reanalysis for MYMK/MYMX if needed
+PXD011967 
+ProteomeXchange/PRIDE	Normal human vastus lateralis muscle biopsies; proteomics cohort includes 58 healthy volunteers (20–87 years) 
+Skeletal muscle tissue proteome (DDA-style) 
+Yes	N/A	58 donors (proteomics cohort described in publication) 
+Best normal-muscle reference for comparison and peptide detectability; cross-study comparison to RMS is nontrivial for MYMK/MYMX
+PXD034908 
+ProteomeXchange/PRIDE	Normal muscle longitudinal biopsies in 18 healthy young men (baseline, day 3, day 14; unilateral immobilization) 
+SWATH/DIA muscle proteomics 
+Yes	N/A	18 participants × timepoints 
+DIA improves data completeness; good for testing whether MYMK/MYMX peptides are ever seen in muscle with SWATH-type workflows
+PXD000865 
+ProteomeXchange/PRIDE	Human “body map” multi-tissue proteome (includes skeletal muscle among many tissues) 
+Multi-tissue proteome	Yes	N/A	Includes skeletal muscle tissue in a multi-tissue design 
+Useful for peptide detectability background and tissue context, not a clean case–control RMS study
+
+Recommended repositories and programmatic discovery strategies
+Even when you know the accession IDs above, reproducible work benefits from using a consistent “discovery → retrieval → analysis” approach across multiple repositories and mirrors.
+
+Start discovery from ProteomeXchange (dataset announcements and centralized metadata), and use an index like OmicsDI to cross-query keywords (e.g., “rhabdomyosarcoma”, “Rh30”, “RD”, “surfaceome”, “phosphoproteome”). Public datasets are centrally browsable via ProteomeCentral and distributed across partner repositories and FTP locations. 
+
+Recommended public ecosystems for this task (and why they matter):
+
+ProteomeXchange Consortium: best for stable accession IDs (PXD) and standardized dataset announcements across repositories. 
+PRIDE Archive: common host for human proteomics data and long-term FTP archival; many PXD projects resolve to PRIDE FTP downloads. 
+MassIVE: critical for large-scale cell-line resources and some RMS projects; exposes MSV identifiers and (often) raw data. 
+jPOSTrepo: hosts raw data for some cancer proteomics projects, distributed via FTP and mirrored in ProteomeCentral metadata (e.g., PXD035131). 
+OmicsDI: cross-indexing of proteomics datasets plus a direct file listing for many PXD projects (useful when PRIDE pages are JS-heavy); shows file types and sometimes abstract sample numbers. 
+Cancer Cell Line Encyclopedia and DepMap Portal: essential for mapping RMS cell lines (RD, RH30, etc.) to consistent identifiers, and for linking proteomics to transcriptomics and dependencies. 
+UniProt: authoritative protein identifiers (accessions) and topology annotations needed for peptide-level validation (critical for MYMK/MYMX evidence review). 
+Bioconductor: reproducible analysis ecosystem for differential abundance modeling and downstream QC/visualization via R packages (e.g., limma, MSnbase, MSstats). 
+Practical dataset retrieval patterns
+All of the listed PXDs expose a stable FTP location via ProteomeCentral dataset pages (or via OmicsDI file lists), which is the most reproducible access mechanism for raw files and processed outputs. 
+
+Example: retrieving a PXD via PRIDE FTP (pattern shown in ProteomeCentral metadata for PXD011967). 
+
+bash
+Copy
+# Example: download PRIDE FTP dataset directory (recursive) for PXD011967
+# (use lftp, wget, or curl; browsers often no longer support FTP)
+lftp -e "mirror --parallel=4 /pride/data/archive/2019/11/PXD011967 ./PXD011967; quit" \
+  ftp://ftp.pride.ebi.ac.uk
+Example: retrieving a jPOST-hosted dataset by FTP path (pattern shown for PXD035131). 
+
+bash
+Copy
+# Example: download raw data from JPST001683 (PXD035131 is hosted on jPOST)
+lftp -e "mirror --parallel=4 /archive/jpostrepos/JPST001683 ./JPST001683; quit" \
+  ftp://ftp.biosciencedbc.jp
+For MassIVE MSV datasets, the dataset summary pages provide the canonical MSV ID and link to documentation; use FTP mirroring once you identify the MSV. 
+
+bash
+Copy
+# Example pattern for MassIVE datasets (exact FTP path depends on MassIVE)
+# Use MassIVE documentation (or dataset page) to confirm full FTP path.
+# Then mirror the folder with lftp or wget.
+Reproducible processing pipeline for MYMK/MYMX differential abundance
+This section is structured as a workflow you can run end-to-end, with checkpoints specifically designed for “difficult” targets like MYMK/MYMX (few peptides, membrane localization, missingness).
+
+Core pipeline decision: raw reanalysis vs processed tables
+For MYMK/MYMX, you generally want raw reanalysis (or at least peptide-level processed outputs), because “protein-level only” tables may (a) drop low-confidence protein groups, (b) collapse ambiguous peptides, and (c) make it impossible to verify proteotypic evidence.
+
+A practical compromise is:
+
+Tier 1: Start from processed protein + peptide tables, if available (fast).
+Tier 2: If MYMK/MYMX are absent or single-peptide, reanalyze raw files with a search tuned for small/membrane proteins, and extract peptide-level evidence.
+Suggested search/quantification engines and why
+Two widely used, reproducible open workflows:
+
+MaxQuant for DDA-based LFQ or TMT, especially when you want “single-tool” standard outputs and broad community comparability. 
+MSFragger (often via FragPipe) when you want fast searches and flexible search strategies (including open-search modes) and want to keep peptide-level control. 
+For targeted validation (PRM/SRM), Skyline is a standard choice for method creation and quantitative analysis. 
+
+Step-by-step pipeline (raw → peptides → proteins → statistics)
+Data staging and metadata curation
+Download the dataset folder and identify:
+Raw files (e.g., .raw, .wiff)
+Sample annotation/metadata (condition labels, replicates, fusion status if provided)
+Any provided search results (often useful for sanity checks)
+For PXD039480, fusion-positive vs fusion-negative cell lines and controls are explicitly described (RD, Rh30 listed among lines; primary myoblast controls; triplicates). 
+
+Create a single sample sheet with columns at minimum:
+sample_id
+condition (e.g., RMS_FP, RMS_FN, PDX, myoblast, fibroblast, normal muscle)
+batch (plex/run/date; especially crucial for TMT and multi-run LFQ)
+replicate
+fusion_status (if known)
+Database choice and peptide-to-protein mapping
+Use a consistent reference proteome (e.g., canonical human proteome) and retain UniProt accessions for downstream evidence review (critical for verifying MYMK/MYMX peptide uniqueness). UniProt provides stable entries for myomaker (MYMK) and myomixer (MYMX), with myomixer annotated as an 84-aa transmembrane protein. 
+
+Keep peptide-level outputs:
+
+peptide sequence
+charge
+modifications
+PSM/q-value
+protein group / accession mapping
+intensities or spectral counts
+Handling shared peptides and “protein inference” for MYMK/MYMX
+Because MYMK/MYMX are expected to yield few peptides, treat them as special-case targets:
+
+Prefer unique (proteotypic) peptides mapping only to MYMK or MYMX.
+If peptides are shared across protein groups, do not rely on a single protein-group intensity for biological conclusions; instead, report peptide-level evidence and ambiguity explicitly.
+This is a practical constraint rather than a theoretical preference: it is the only way to avoid over-interpreting a protein-group call in a low-peptide regime.
+
+Normalization, missingness, and imputation
+Normalize intensities depending on design:
+Within a single LFQ study: log2-transform protein intensities and apply global normalization (median/VSN-style) before modeling.
+For multi-plex TMT: ensure the dataset has been normalized across plexes (many published workflows include a common reference channel); use the authors’ normalization if provided, and document it.
+Downstream differential analysis in proteomics is strongly affected by missingness patterns; robust workflows explicitly address missing data rather than ignoring it. 
+
+Imputation strategy (practical guidance):
+For “missing at random” patterns (technical stochasticity): mild imputation can be acceptable.
+For “missing not at random” patterns (low abundance below detection): left-censored imputation models are more defensible, but you must report sensitivity to imputation choices.
+DEP-family workflows and benchmarking studies emphasize that imputation choices can materially change calls, especially for low-abundance proteins. 
+
+Batch correction for cross-study comparisons
+If you are comparing RMS datasets to separate normal muscle datasets (e.g., PXD039480 vs PXD011967), you will face dominant batch effects. If you still proceed:
+
+Restrict to shared quantified peptides/proteins after harmonized processing if possible.
+Run batch correction only after careful normalization and only when batch is known and not confounded with biology.
+ComBat (empirical Bayes) is a standard method for adjusting known batch effects, implemented in the sva package. 
+
+Statistical testing for differential abundance
+Practical, reproducible options:
+
+limma (moderated linear models) is robust for small n and flexible designs, and is commonly used in omics differential analyses. 
+MSstats provides proteomics-focused modeling (linear mixed models) for label-free and labeled workflows and supports DDA/targeted/DIA inputs. 
+For the “MYMK/MYMX question,” you will often be in a regime where per-protein statistics are underpowered (because the proteins may be missing or single-peptide). In that case, prioritize:
+
+effect size estimates (log2 fold change),
+presence/absence patterns,
+peptide-level evidence strength,
+and targeted validation plans (next section).
+Strategies to validate low-abundance membrane proteins like MYMK and MYMX
+MYMK/MYMX are muscle fusogens; MYMX is explicitly annotated as a short transmembrane protein (84 aa). 
+ As a class, small proteins (<100 aa) are widely recognized as under-detected in conventional proteomics pipelines, which is directly relevant to MYMX. 
+
+Schematic representation of various steps of myoblast fusion. Myoblast... |  Download Scientific Diagram
+Cryo-EM structures of Myomaker reveal a molecular basis for myoblast fusion  | Nature Structural & Molecular Biology
+Myomerger induces fusion of non-fusogenic cells and is required for  skeletal muscle development | Nature Communications
+
+Evidence hierarchy you should report for MYMK/MYMX
+When you report “detected” or “not detected,” make it reproducible by explicitly logging:
+
+Peptide evidence: number of unique peptides, peptide sequences, q-values/FDR, and whether peptides are modified.
+Quantitation mode: MS1 intensity-based, spectral counting, or reporter-ion (TMT).
+Spectrum-level support (when possible): use ProteomeXchange/USI workflows to point to representative spectra that support the peptide calls (especially if only 1 peptide). 
+Why surfaceome/membrane enrichment datasets matter
+Compared with whole-lysate shotgun proteomics, membrane/surface enrichment procedures can increase the probability of capturing transmembrane proteins. In practice, this is why PXD039480 is uniquely valuable for MYMK/MYMX: it enriched membrane/surface proteins, profiled multiple RMS lines/PDXs, and included primary myoblast controls in matched processing. 
+
+Targeted reanalysis and targeted acquisition recommendations
+If MYMK/MYMX are absent or single-peptide in discovery workflows, a pragmatic validation pathway is:
+
+Targeted re-search of raw files (same data, different search assumptions) using a flexible engine such as MSFragger (e.g., alternate cleavage rules, open searches for unexpected modifications), then re-extract peptide evidence. 
+Targeted acquisition (PRM/SRM) in new experiments:
+Build a targeted method around candidate proteotypic peptides and transitions.
+Quantify with Skyline (supports targeted method creation and quantitative analysis for SRM workflows; often used as the workbench for targeted assays). 
+Use heavy-labeled peptide standards for absolute/relative quantification where feasible (especially if comparing across labs or batches).
+Even if you do not run new MS now, designing a PRM/SRM panel is valuable because it forces you to answer the key feasibility question: are there proteotypic peptides for MYMK/MYMX in your protease/fragmentation context?
+
+Integrating CCLE/DepMap proteomics and transcriptomics with normal muscle references
+What CCLE/DepMap adds (and what it does not)
+CCLE mass-spec proteomics provides a broad baseline of protein abundance across hundreds of cancer cell lines (MSV000085836; 375 lines, TMT 10-plex and SPS-MS3). 
+DepMap provides harmonized cell line IDs and multi-omics layers (including transcriptomics), enabling protein–RNA concordance analysis and consistent filtering for RMS lineage. 
+Sanger DepMap proteomics provides additional mass-spec proteomics at scale with raw files deposited as PXD030304, with processed data available per their documentation. 
+What they don’t provide: true normal skeletal muscle proteomes processed alongside cancer cell lines. So CCLE/DepMap is best for RMS cell line benchmarking and RNA–protein concordance, not “RMS vs normal muscle tissue” without additional reference datasets and batch modeling.
+
+A practical integration workflow
+Identify RMS lines of interest (e.g., RD, RH30, Rh4, etc.) from PXD039480 (for matched RMS-vs-myoblast) and map them to CCLE/DepMap IDs. PXD039480 explicitly lists RD and Rh30 among the profiled RMS lines. 
+Pull proteomics for those lines from:
+MSV000085836 (CCLE proteomics) 
+PXD030304 processed outputs (Sanger DepMap proteomics) 
+Pull RNA expression (TPM/log2(TPM+1)) for MYMK/MYMX from DepMap releases and compute RNA–protein concordance:
+Expect missing protein values even when RNA is present for MYMX-type microproteins (biological and technical limitations for small proteins). 
+For normal muscle reference:
+Use PXD011967 and/or PXD034908 to ask a different but critical question: are MYMK/MYMX peptides detectable in normal muscle proteomics at all, and under which acquisition type (DDA vs SWATH)? 
+“RMS vs normal muscle” interpretation rules of thumb
+If MYMX is not detected in muscle proteomics datasets where tens of hundreds to thousands of proteins are quantified, treat proteomics “non-detection” as weak evidence of absence for a microprotein, not confirmation of no expression. 
+Stronger evidence comes from:
+repeated detection of the same peptide(s) in multiple runs/replicates,
+consistent quant signal across technical replicates,
+and/or targeted validation.
+Quality criteria, pitfalls, and a prioritized action plan with runnable tooling
+Confidence criteria you should enforce for MYMK/MYMX calls
+For each dataset and each target, document:
+
+Whether the target is supported by ≥1 unique peptide at 1% FDR (or the dataset’s stated threshold).
+Whether the identification is stable across replicates and conditions (especially in PXD039480 where triplicates exist). 
+Whether the peptide(s) map uniquely in UniProt (to avoid protein inference artifacts). 
+Whether signal is intensity-based or spectral-count based (spectral count quantification is more fragile for low counts, which is common for membrane proteins). 
+Key pitfalls for this specific question
+Missingness dominates: A “not quantified” protein is often a detection-limit issue, not a biological zero—especially for microproteins and membrane proteins. 
+Cross-study batch effects: Comparing RMS cell lines (in vitro) to muscle biopsies (in vivo) across different labs and instruments is high risk for single-protein inference; if you do it, you must report the dependency on normalization/batch correction choices. 
+Protein inference ambiguity: Small proteins can be “lost” if their peptides are shared, modified, low scoring, or filtered out. Treat peptide-level evidence as primary for MYMK/MYMX.
+Prioritized action plan
+This plan is designed to get you a defensible answer quickly, before you invest in cross-cohort harmonization.
+
+First pass: single-study RMS vs myoblast (highest practicality)
+Download and analyze PXD039480 first (RMS lines/PDXs + primary myoblast controls; membrane-enriched; triplicates). 
+Extract MYMK/MYMX at both protein and peptide level; if absent, document absence and proceed to targeted re-search.
+Second pass: broad RMS cell line benchmarking
+Query CCLE proteomics (MSV000085836) for RMS lines and extract MYMK/MYMX; integrate with DepMap transcriptomics to see whether MYMK/MYMX RNA is present when protein is missing. 
+Optionally expand to Sanger DepMap proteomics (PXD030304) for additional coverage and cross-platform confirmation. 
+Third pass: normal muscle peptide detectability (supports interpretation)
+Analyze PXD011967 (normal muscle; 58 donors) and PXD034908 (SWATH; 18 participants) specifically for MYMK/MYMX peptide detectability. 
+Suggested workflow diagram (mermaid)
+mermaid
+Copy
+flowchart TD
+  A[Select datasets] --> B[PXD039480: RMS + primary myoblast controls]
+  A --> C[CCLE/DepMap proteomics: MSV000085836 (+ PXD030304 optional)]
+  A --> D[Normal muscle references: PXD011967 & PXD034908]
+
+  B --> E[Download raw + metadata]
+  C --> E
+  D --> E
+
+  E --> F[Search/quantify: MaxQuant or MSFragger/FragPipe]
+  F --> G[Extract peptide-level evidence for MYMK/MYMX]
+  G --> H[Protein-level summary where valid]
+  H --> I[Normalization + missingness handling]
+  I --> J[Differential analysis (limma / MSstats)]
+  G --> K{Detected with proteotypic peptides?}
+  K -->|Yes| L[Report effect sizes + evidence]
+  K -->|No| M[Targeted re-search; then PRM/SRM design]
+  M --> N[Skyline method + validation]
+Tooling and example parameters
+Below are representative high-uptake settings consistent with the tool references; you should still align to the dataset’s instrument and labeling design.
+
+MaxQuant (DDA LFQ / TMT): use it when you want standardized proteinGroups/peptides outputs and broad comparability. 
+
+MSFragger/FragPipe (DDA; flexible searches): use it when you want rapid iteration and flexible search strategies. 
+
+Skyline (targeted validation): use it to build PRM/SRM methods and quantify targeted data. 
+
+OpenMS (pipeline scripting): use it if you want command-line composability and reproducible workflows. 
+
+Perseus (interactive downstream analysis): use it for interactive QC and statistics on protein matrices. 
+
+R analysis packages:
+
+MSnbase for MS data infrastructure and processing workflows. 
+limma for linear-model differential abundance. 
+MSstats for proteomics-tailored mixed modeling. 
+sva/ComBat for batch correction when batch is known and not confounded. 
+Minimal R pseudocode to extract MYMK/MYMX from MaxQuant or FragPipe outputs
+r
+Copy
+# Pseudocode: extract MYMK/MYMX (protein- and peptide-level) from MaxQuant outputs
+
+# 1) Read MaxQuant protein groups
+pg <- read.delim("proteinGroups.txt", stringsAsFactors = FALSE, check.names = FALSE)
+
+# 2) Define targets: gene symbols and/or UniProt accessions
+# UniProt IDs (from UniProt entries):
+# MYMK: A6NI61 ; MYMX: A0A1B0GTQ4
+targets_genes <- c("MYMK", "MYMX")
+targets_uniprot <- c("A6NI61", "A0A1B0GTQ4")
+
+# 3) Protein-level extraction
+# MaxQuant often has columns like "Gene names" and "Protein IDs"
+hit_prot <- pg[
+  grepl("\\bMYMK\\b|\\bMYMX\\b", pg$`Gene names`) |
+    grepl(paste(targets_uniprot, collapse="|"), pg$`Protein IDs`),
+  ]
+
+# 4) Pull intensity columns (adapt column name pattern to your dataset: LFQ intensity, Intensity, etc.)
+int_cols <- grep("^LFQ intensity |^Intensity ", colnames(pg), value = TRUE)
+prot_mat <- hit_prot[, c("Protein IDs", "Gene names", int_cols)]
+# log2 transform with pseudocount
+prot_mat[int_cols] <- log2(prot_mat[int_cols] + 1)
+
+# 5) Peptide-level evidence extraction (recommended for MYMK/MYMX)
+pep <- read.delim("peptides.txt", stringsAsFactors = FALSE, check.names = FALSE)
+pep_hit <- pep[
+  grepl(paste(targets_uniprot, collapse="|"), pep$Proteins) |
+    grepl("\\bMYMK\\b|\\bMYMX\\b", pep$`Gene names`),
+  ]
+
+# 6) Join to sample metadata you create (sample_id -> condition/fusion_status/batch)
+meta <- read.delim("sample_metadata.tsv", stringsAsFactors = FALSE)
+
+# 7) Differential analysis example (limma) for a protein matrix:
+# - build a design matrix and contrasts (e.g., RMS vs myoblast)
+# - fit lmFit + eBayes
+# NOTE: For MYMK/MYMX, also inspect peptide evidence and missingness before trusting p-values.
+Suggested visualizations (for your report and QC)
+For PXD039480 (best “matched” study):
+Box/violin plots of MYMK and MYMX intensities across: FP-RMS vs FN-RMS vs PDX vs myoblast controls.
+Missingness heatmap (samples × peptides) for MYMK/MYMX peptides.
+For CCLE/DepMap integration:
+Scatter: MYMK RNA (log2(TPM+1)) vs protein abundance; same for MYMX.
+“Presence/absence” bar chart for MYMX across RMS lines vs other lineages.
+For cross-study muscle references:
+Peptide detectability chart: whether any proteotypic MYMK/MYMX peptides appear in PXD011967 (DDA) vs PXD034908 (SWATH).
+These plots are primarily about evidence strength rather than significance testing, because the dominant risk for MYMK/MYMX is non-detection and ambiguous inference rather than classical statistical power.

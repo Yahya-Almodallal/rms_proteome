@@ -1,0 +1,35 @@
+# OS/editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*:Zone.Identifier
+
+# Python cache/build
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+
+# Large raw data and derived heavy outputs
+*.raw
+*.wiff
+*.mzML
+*.mzXML
+*.mgf
+*.idXML
+*.sqMass
+*.tmp
+
+# Keep folder structure but avoid tracking bulky contents
+data/raw/**
+!data/raw/**/.gitkeep
+data/interim/**
+!data/interim/**/.gitkeep
+data/processed/**
+!data/processed/**/.gitkeep
+results/**
+!results/**/.gitkeep
+
+# Local metadata refresh outputs (committed snapshots are in metadata/)
+metadata/*.tmp

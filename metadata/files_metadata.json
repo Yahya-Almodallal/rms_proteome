@@ -1,0 +1,102 @@
+{
+  "generated_utc": "2026-03-09T14:20:27.450021+00:00",
+  "record_count": 16,
+  "records": [
+    {
+      "path": ".gitignore",
+      "size_bytes": 534,
+      "mtime_utc": "2026-03-09T14:20:22.700330+00:00",
+      "sha256": "8e50a2968dda2cd6de1b57689174c60b4ea5fb321d9b51c53d6907f24575dabb"
+    },
+    {
+      "path": "LICENSE",
+      "size_bytes": 16726,
+      "mtime_utc": "2026-03-09T14:19:50.395869+00:00",
+      "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85"
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 1368,
+      "mtime_utc": "2026-03-09T14:19:30.012635+00:00",
+      "sha256": "52f85b50a92b1505f64e74ce75b321077b31cf04dcf36a9d29b1918ba338f51f"
+    },
+    {
+      "path": "analysis/notebooks/.gitkeep",
+      "size_bytes": 0,
+      "mtime_utc": "2026-03-09T14:19:30.016654+00:00",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ann.genes.sheets.csv",
+      "size_bytes": 5037,
+      "mtime_utc": "2026-03-09T12:18:37.619982+00:00",
+      "sha256": "75460ee83477cc543abba6da9415626719b3d720d9e729d1775ccbbd335234fe"
+    },
+    {
+      "path": "config/datasets.yaml",
+      "size_bytes": 283,
+      "mtime_utc": "2026-03-09T14:19:30.012635+00:00",
+      "sha256": "8eeb852d767a6c36c94d63559d2498bdeb2247e06cd1ec42c8287186e2cc7ccf"
+    },
+    {
+      "path": "config/targets.yaml",
+      "size_bytes": 202,
+      "mtime_utc": "2026-03-09T14:19:30.012635+00:00",
+      "sha256": "a91fba004e0a0ad79e6f8f139439bf319a499ef84d41a744e7efeb245b67d86e"
+    },
+    {
+      "path": "data/external/.gitkeep",
+      "size_bytes": 0,
+      "mtime_utc": "2026-03-09T14:19:30.016654+00:00",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/interim/.gitkeep",
+      "size_bytes": 0,
+      "mtime_utc": "2026-03-09T14:19:30.016654+00:00",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/processed/.gitkeep",
+      "size_bytes": 0,
+      "mtime_utc": "2026-03-09T14:19:30.016654+00:00",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/raw/PXD039480/.gitkeep",
+      "size_bytes": 0,
+      "mtime_utc": "2026-03-09T14:19:30.016654+00:00",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/project_scope.md",
+      "size_bytes": 548,
+      "mtime_utc": "2026-03-09T14:19:30.012635+00:00",
+      "sha256": "fb1f6c60b7ae426c2a1664ded5c70eb0400c44c06e4cb9cdd934bb687cae137b"
+    },
+    {
+      "path": "metadata/README.md",
+      "size_bytes": 322,
+      "mtime_utc": "2026-03-09T14:19:30.012635+00:00",
+      "sha256": "3e3e3849fdbfafc690354379107c0a975f87afc5676cb9da3e0c5722c8eecc40"
+    },
+    {
+      "path": "results/.gitkeep",
+      "size_bytes": 0,
+      "mtime_utc": "2026-03-09T14:19:30.016654+00:00",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "review.txt",
+      "size_bytes": 26696,
+      "mtime_utc": "2026-03-09T14:16:24.486981+00:00",
+      "sha256": "d3c17869ce6933f2df3eec18311e71de6cbe39d0ef9dc7955c30392cb9476f6f"
+    },
+    {
+      "path": "scripts/00_build_manifest.py",
+      "size_bytes": 3745,
+      "mtime_utc": "2026-03-09T14:20:12.102703+00:00",
+      "sha256": "69cc787f0f876ba3ac3e363cb3569dbe1f205901c47a770af5f5bfb44fe89c58"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+# Target proteins/genes to track from the start.
+# Add accession IDs as you validate them in your pipeline.
+primary_targets:
+  - gene: MYMK
+  - gene: MYMX
+secondary_targets_source: ann.genes.sheets.csv

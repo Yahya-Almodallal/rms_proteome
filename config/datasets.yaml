@@ -1,0 +1,8 @@
+# Dataset registry for this project.
+# Keep this file small and explicit for reproducibility.
+datasets:
+  - id: PXD039480
+    repository: ProteomeXchange/PRIDE
+    priority: 1
+    description: "RMS cell lines + PDX + myoblast controls; membrane/surface-enriched"
+    status: planned
