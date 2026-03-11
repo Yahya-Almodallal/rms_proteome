@@ -1,0 +1,10 @@
+date	entry_type	name	href	size_or_target	base_ftp	level	parent
+2020-Jul-28	Directory	ccms_parameters	ftp://massive-ftp.ucsd.edu:21/v03/MSV000085836/ccms_parameters/		ftp://massive-ftp.ucsd.edu/v03/MSV000085836/	root	
+2024-Sep-24	Link	ccms_peak	ftp://massive-ftp.ucsd.edu:21/v03/MSV000085836/ccms_peak		ftp://massive-ftp.ucsd.edu/v03/MSV000085836/	root	
+2020-Jul-28	Directory	metadata	ftp://massive-ftp.ucsd.edu:21/v03/MSV000085836/metadata/		ftp://massive-ftp.ucsd.edu/v03/MSV000085836/	root	
+2020-Jul-28	Directory	raw	ftp://massive-ftp.ucsd.edu:21/v03/MSV000085836/raw/		ftp://massive-ftp.ucsd.edu/v03/MSV000085836/	root	
+2020-Jul-28	Directory	sequence	ftp://massive-ftp.ucsd.edu:21/v03/MSV000085836/sequence/		ftp://massive-ftp.ucsd.edu/v03/MSV000085836/	root	
+2020-Jul-28	File	params.xml	ftp://massive-ftp.ucsd.edu:21/v03/MSV000085836/ccms_parameters/params.xml	60146 bytes	ftp://massive-ftp.ucsd.edu/v03/MSV000085836/ccms_parameters/	sub	ccms_parameters
+2020-Jul-28	File	Table_S1_Sample_Information.xlsx	ftp://massive-ftp.ucsd.edu:21/v03/MSV000085836/metadata/Table_S1_Sample_Information.xlsx	28246 bytes	ftp://massive-ftp.ucsd.edu/v03/MSV000085836/metadata/	sub	metadata
+2020-Jul-28	Directory	raw	ftp://massive-ftp.ucsd.edu:21/v03/MSV000085836/raw/raw/		ftp://massive-ftp.ucsd.edu/v03/MSV000085836/raw/	sub	raw
+2020-Jul-28	File	2014-02-04_REVuniprot_HUMAN_02_2014_contam_sorted.fasta	ftp://massive-ftp.ucsd.edu:21/v03/MSV000085836/sequence/2014-02-04_REVuniprot_HUMAN_02_2014_contam_sorted.fasta	88821406 bytes	ftp://massive-ftp.ucsd.edu/v03/MSV000085836/sequence/	sub	sequence

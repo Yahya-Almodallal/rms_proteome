@@ -1,0 +1,64 @@
+{
+  "generated_utc": "2026-03-11T11:55:48.958482+00:00",
+  "pride": {
+    "PXD011967": {
+      "project_title": "Proteomics of Human Skeletal Muscle",
+      "record_count": 773,
+      "total_bytes": 1094370594649
+    },
+    "PXD034908": {
+      "project_title": "The muscle proteome reflects changes in mitochondrial function, cellular stress and proteolysis after 14 days of unilateral lower limb immobilization in active young men",
+      "record_count": 168,
+      "total_bytes": 130347200635
+    },
+    "PXD030304": {
+      "project_title": "Pan-cancer proteomic map of 949 human cell lines (ProCan-DepMapSanger)",
+      "record_count": 287,
+      "total_bytes": 4084306178202
+    },
+    "PXD042840": {
+      "project_title": "human rhabdomyosarcoma cells LC-MSMS",
+      "record_count": 7,
+      "total_bytes": 6100847119
+    },
+    "PXD052488": {
+      "project_title": "Multi-omics characterization of childhood rhabdomyosarcoma",
+      "record_count": 393,
+      "total_bytes": 304977080830
+    },
+    "PXD035131": {
+      "project_title": "",
+      "record_count": 0,
+      "total_bytes": 0,
+      "error": "HTTP Error 404: Not Found"
+    }
+  },
+  "massive": {
+    "MSV000085836": {
+      "record_count": 9,
+      "top_level_entries": 5,
+      "root_ftp": "ftp://massive-ftp.ucsd.edu/v03/MSV000085836/"
+    },
+    "MSV000086494": {
+      "record_count": 5,
+      "top_level_entries": 3,
+      "root_ftp": "ftp://massive-ftp.ucsd.edu/v03/MSV000086494/"
+    }
+  },
+  "msv000085836_target_lines": {
+    "sample_info_rows": 388,
+    "sample_info_columns": [
+      "CCLE Code",
+      "Cell Line",
+      "Notes",
+      "Protein 10-Plex ID",
+      "Protein TMT Label",
+      "Tissue of Origin"
+    ],
+    "requested_line_matches": 5
+  },
+  "pxd030304_model_availability": {
+    "requested_models": 27,
+    "matched_models": 22
+  }
+}

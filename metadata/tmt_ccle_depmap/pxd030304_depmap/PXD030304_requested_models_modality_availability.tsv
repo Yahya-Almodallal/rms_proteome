@@ -1,0 +1,28 @@
+requested_model	matched_model_id	matched_cell_line_name	matched_ccle_name	mutation_data	cnv_data	rnaseq_data	dna_methylation_data	crispr_dependency_data	drug_response_data	fusion_data	proteomics_data
+RH-18	ACH-000689	RH-18	RH18_SOFT_TISSUE	True	True	True	True	False	False	True	False
+RD	ACH-000169	RD	RD_SOFT_TISSUE	True	True	True	True	True	True	True	True
+TE-125-T	ACH-000079	TE 125.T	TE125T_FIBROBLAST	True	True	True	False	False	False	True	False
+KYM-1	ACH-000607	KYM-1	KYM1_SOFT_TISSUE	True	True	True	True	True	True	True	True
+A204	ACH-000201	A-204	A204_SOFT_TISSUE	True	True	True	True	False	True	True	True
+TE-441-T	ACH-000772	TE 441.T	TE441T_SOFT_TISSUE	True	True	True	True	False	False	True	False
+RH-3				False	False	False	False	False	False	False	False
+SCMC-RM2	ACH-001184	SCMC-RM2	SCMCRM2_SOFT_TISSUE	True	True	True	False	True	True	True	False
+RH-JT	ACH-001745	RhJT	RHJT_SOFT_TISSUE	True	True	True	False	True	True	True	False
+RH-36	ACH-001751	Rh36	RH36_SOFT_TISSUE	True	True	True	False	False	True	True	False
+SJRH30	ACH-001189	SJRH-30	SJRH30_SOFT_TISSUE	False	False	False	False	False	False	False	False
+RH-28	ACH-001740	RH28	RH28_SOFT_TISSUE	True	True	True	False	True	True	True	False
+SMS-CTR	ACH-001196	SMS-CTR	SMSCTR_SOFT_TISSUE	True	True	True	False	True	True	True	False
+RH-4	ACH-001765	Rh4	RH4_SOFT_TISSUE	True	True	True	False	True	True	True	False
+TTC-442	ACH-001750	TTC442	TTC442_SOFT_TISSUE	True	True	True	False	True	True	True	False
+CW9019	ACH-001050	CW9019	CW9019_SOFT_TISSUE	True	True	True	False	True	True	True	False
+DL	ACH-001059	DL	DL_SOFT_TISSUE	True	True	True	False	False	True	True	False
+JR	ACH-001096	JR	JR_SOFT_TISSUE	True	True	True	False	True	True	True	False
+SCMC-RM2-1				False	False	False	False	False	False	False	False
+Hs-729-T				False	False	False	False	False	False	False	False
+TE-617-T	ACH-000051	TE 617.T	TE617T_SOFT_TISSUE	True	True	True	True	False	True	True	False
+TE-159-T	ACH-000175	TE159T	TE159T_FIBROBLAST	True	True	True	False	False	False	True	False
+RMZ-RC2				False	False	False	False	False	False	False	False
+RMZ	ACH-002501	RMZ	RMZ_SOFT_TISSUE	False	False	True	False	False	False	True	False
+RMZ-RC5				False	False	False	False	False	False	False	False
+RH-41	ACH-000100	RH-41	RH41_SOFT_TISSUE	True	True	True	False	True	True	True	True
+RMS-YM	ACH-002048	RMS-YM	RMSYM_SOFT_TISSUE	True	True	True	False	True	True	True	False

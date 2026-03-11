@@ -1,0 +1,127 @@
+{
+  "accession": "PXD030304",
+  "title": "Pan-cancer proteomic map of 949 human cell lines (ProCan-DepMapSanger)",
+  "additionalAttributes": [],
+  "projectDescription": "This pan-cancer cell line proteomic atlas comprises proteomic data acquired by data independent acquisition (specifically, SWATH) mass spectrometry for 949 cancer cell lines. Cell lines were processed in technical triplicate, with duplicates acquired on different mass spectrometers, alongside HEK293T cell line control samples processed across the experimental period. For further details, refer to the publication that accompanies this data deposition.",
+  "sampleProcessingProtocol": "The cell lines were each prepared using Accelerated Barocycler Lysis and Extraction (ABLE) in a barocycler instrument, as described in Lucas et al J Proteome Res 2019. Refer to the publication that accompanies this data deposition for full sample processing details.",
+  "dataProcessingProtocol": "DIA-MS data in wiff file format were collected for 6,981 MS runs, and were processed using DIA-NN. Proteins were then quantified using maxLFQ with default parameters and implemented using the DiaNN R Package. For further details, refer to the publication that accompanies this data deposition.",
+  "projectTags": [],
+  "keywords": [
+    "Proteomics",
+    "Dia",
+    "Swath",
+    "Cancer",
+    "Cell line"
+  ],
+  "doi": "",
+  "submissionType": "PARTIAL",
+  "license": "Creative Commons Public Domain (CC0)",
+  "submissionDate": "2022-07-06",
+  "publicationDate": "2022-07-12",
+  "submitters": [
+    {
+      "title": "Dr",
+      "firstName": "Rebecca",
+      "lastName": "Poulos",
+      "identifier": "163210180",
+      "affiliation": "Children's Medical Research Institute, University of Sydney",
+      "email": "rpoulos@cmri.org.au",
+      "country": "Australia",
+      "orcid": "0000-0002-8419-7028",
+      "name": "Rebecca Poulos",
+      "id": "163210180"
+    }
+  ],
+  "labPIs": [
+    {
+      "title": "Dr",
+      "firstName": "Qing",
+      "lastName": "Zhong",
+      "identifier": "2427104",
+      "affiliation": "Head, Cancer Data Science (ProCan), Children's Medical Research Institute, The University of Sydney, Westmead, NSW, Australia",
+      "email": "qzhong@cmri.org.au",
+      "country": "",
+      "orcid": "",
+      "name": "Qing Zhong",
+      "id": "2427104"
+    }
+  ],
+  "instruments": [
+    {
+      "@type": "CvParam",
+      "cvLabel": "MS",
+      "accession": "MS:1002533",
+      "name": "TripleTOF 6600"
+    }
+  ],
+  "softwares": [
+    {
+      "@type": "CvParam",
+      "cvLabel": "MS",
+      "accession": "MS:1003253",
+      "name": "DIA-NN"
+    }
+  ],
+  "experimentTypes": [
+    {
+      "@type": "CvParam",
+      "cvLabel": "PRIDE",
+      "accession": "PRIDE:0000447",
+      "name": "SWATH MS"
+    }
+  ],
+  "quantificationMethods": [
+    {
+      "@type": "CvParam",
+      "cvLabel": "PRIDE",
+      "accession": "PRIDE:0000447",
+      "name": "SWATH MS"
+    }
+  ],
+  "countries": [
+    "Australia"
+  ],
+  "sampleAttributes": [
+    {
+      "@type": "Tuple",
+      "key": {
+        "cvLabel": "EFO",
+        "accession": "OBI:0100026",
+        "name": "organism"
+      },
+      "value": [
+        {
+          "cvLabel": "NEWT",
+          "accession": "NEWT:9606",
+          "name": "Homo sapiens (Human)"
+        }
+      ]
+    }
+  ],
+  "organisms": [
+    {
+      "@type": "CvParam",
+      "cvLabel": "NEWT",
+      "accession": "NEWT:9606",
+      "name": "Homo sapiens (human)"
+    }
+  ],
+  "organismParts": [],
+  "diseases": [],
+  "references": [
+    {
+      "referenceLine": "Gon\u00e7alves E, Poulos RC, Cai Z, Barthorpe S, Manda SS, Lucas N, Beck A, Bucio-Noble D, Dausmann M, Hall C, Hecker M, Koh J, Lightfoot H, Mahboob S, Mali I, Morris J, Richardson L, Seneviratne AJ, Shepherd R, Sykes E, Thomas F, Valentini S, Williams SG, Wu Y, Xavier D, MacKenzie KL, Hains PG, Tully B, Robinson PJ, Zhong Q, Garnett MJ, Reddel RR. Pan-cancer proteomic map of 949 human cell lines. Cancer Cell. 2022 40(8):835-849.e8",
+      "pubmedID": 35839778,
+      "doi": "10.1016/j.ccell.2022.06.010"
+    }
+  ],
+  "identifiedPTMStrings": [
+    {
+      "@type": "CvParam",
+      "cvLabel": "MOD",
+      "accession": "MOD:00397",
+      "name": "iodoacetamide derivatized residue"
+    }
+  ],
+  "totalFileDownloads": 671791
+}

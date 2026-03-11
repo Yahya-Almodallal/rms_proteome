@@ -1,0 +1,6 @@
+date	entry_type	name	href	size_or_target	base_ftp	level	parent
+2020-Nov-20	Directory	ccms_parameters	ftp://massive-ftp.ucsd.edu:21/v03/MSV000086494/ccms_parameters/		ftp://massive-ftp.ucsd.edu/v03/MSV000086494/	root	
+2024-Sep-24	Link	ccms_peak	ftp://massive-ftp.ucsd.edu:21/v03/MSV000086494/ccms_peak		ftp://massive-ftp.ucsd.edu/v03/MSV000086494/	root	
+2020-Nov-20	Directory	raw	ftp://massive-ftp.ucsd.edu:21/v03/MSV000086494/raw/		ftp://massive-ftp.ucsd.edu/v03/MSV000086494/	root	
+2020-Nov-20	File	params.xml	ftp://massive-ftp.ucsd.edu:21/v03/MSV000086494/ccms_parameters/params.xml	4734 bytes	ftp://massive-ftp.ucsd.edu/v03/MSV000086494/ccms_parameters/	sub	ccms_parameters
+2020-Nov-20	Directory	Ben-Javed	ftp://massive-ftp.ucsd.edu:21/v03/MSV000086494/raw/Ben-Javed/		ftp://massive-ftp.ucsd.edu/v03/MSV000086494/raw/	sub	raw

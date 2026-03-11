@@ -10,6 +10,10 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 .venv/
+.envs/
+.mamba/
+.cache/
+.tmp/
 
 # Large raw data and derived heavy outputs
 *.raw
@@ -28,6 +32,12 @@ data/interim/**
 !data/interim/**/.gitkeep
 data/processed/**
 !data/processed/**/.gitkeep
+data/surfaceome/**
+!data/surfaceome/**/.gitkeep
+data/tmt/**
+!data/tmt/**/.gitkeep
+data/normal_muscle/**
+!data/normal_muscle/**/.gitkeep
 results/**
 !results/**/.gitkeep
 

@@ -18,22 +18,30 @@ The review in `review.txt` prioritizes:
 ## Repository layout
 
 - `config/`: dataset and target settings.
-- `data/`: raw/interim/processed data (raw kept out of git by default).
-- `scripts/`: small, commented helper scripts.
-- `metadata/`: machine-readable snapshots of tracked files.
+- `data/surfaceome/PXD039480/`: current downloaded + derived surfaceome files.
+- `data/tmt/`: scaffold for CCLE deep mass-spec (MSV000085836) + DepMap transcriptomics.
+- `scripts/surfaceome_pxd039480/`: current analysis scripts for the surfaceome dataset.
+- `scripts/tmt_ccle_depmap/`: placeholder for upcoming TMT/DepMap pipeline code.
+- `metadata/`: manifests and metadata grouped by data modality.
 - `docs/`: protocol and decision notes.
 - `analysis/`: notebooks and analysis code.
-- `results/`: figures/tables/reports.
+- `results/`: outputs grouped by data modality.
+
+## Scope note on normal muscle
+
+Adult normal skeletal muscle references (`PXD011967`, `PXD034908`) were considered for context but are removed from the active plan.
+
+Reason: adult muscle is not expected to robustly express `MYMK`/`MYMX`, so these datasets are weak comparators for those targets. If normal developmental context is needed later, prioritize fetal/embryonic muscle proteomics references if available.
 
 ## Quick start
 
 ```bash
 git init
-python3 scripts/01_build_predownload_manifest_pxd039480.py --project PXD039480 --outdir metadata
+python3 scripts/surfaceome_pxd039480/01_build_predownload_manifest_pxd039480.py --project PXD039480 --outdir metadata/surfaceome_pxd039480
 ```
 
 ## Next immediate steps
 
-1. Review `metadata/download_manifest_pxd039480.tsv` before download.
+1. Review `metadata/surfaceome_pxd039480/download_manifest_pxd039480.tsv` before download.
 2. Build sample sheet for `PXD039480` in `metadata/samples.pxd039480.tsv`.
 3. Add first extraction script for MYMK/MYMX peptide/protein hits.

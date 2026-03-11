@@ -1,0 +1,173 @@
+{
+  "accession": "PXD052488",
+  "title": "Multi-omics characterization of childhood rhabdomyosarcoma",
+  "additionalAttributes": [],
+  "projectDescription": "Rhabdomyosarcoma (RMS) presents a significant challenge in the field of oncology as a high-grade, aggressive soft tissue sarcoma that originates from skeletal (striated) muscle cells which do not fully differentiate. This condition is characterized by two major molecular and histopathological subtypes: 'alveolar' RMS (ARMS) and 'embryonic' RMS (ERMS), each driven by unique underlying mechanisms. The disease's inherent heterogeneity, complex genetic makeup, and limited therapeutic options highlight the need for innovative research approaches to understand its complexities. Through the use of transcriptomics, alongside an exploration of proteomics, researchers have identified dysregulated proteins common to both subtypes, offering insights into the pathophysiology and aggressiveness of RMS. Additionally, metabolomics sheds light on metabolic pathways linked to RMS perturbation. The integration of high-throughput omics \u2018Multi-omics\u2019 technologies thus provides unprecedented opportunities to dissect the molecular intricacies of cancer biology, offering avenues for enhanced understanding and targeted interventions in RMS.",
+  "sampleProcessingProtocol": "Extract for the plasma samples, proteins will be extracted using 1 ml lysis solution (8 M urea, 500 mM Tris HCl, pH 8.5). The lysate will be precipitated with acetone and assayed using BCA method. Peptide mixture will be placed on the C18 and centrifuged at 150 g/ 3 min to trap peptides on the cartilage.  For translation (transfer-elution), C18 cartilage will be washed with 20 \u00b5l of 0.2% FA and transferred to a new collection tubes. Peptide mixture will be collected by rinsing the cartilage with 80% acetonitrile (10 \u00b5l x3 times) where the collected elute contains desalted peptides ready for injection.",
+  "dataProcessingProtocol": "MS/MS files from the Orbitrap Fusion Lumos will be analyzed by Proteome discoverer software. MS/MS spectra will be searched against the human database. Briefly, protein sequences will be downloaded from UniProt. The statistical programming language R is used for statistical data analysis. To identify correlations between samples, Spearman correlation will be applied, and the R package q-value will be used for calculating false discovery rate adjusted p-values (q-values). Results will be filtered for a q-value < 0.05. The detected proteome changes in different subgroups of RMS will be correlated with patients\u2019 clinical data.",
+  "projectTags": [],
+  "keywords": [
+    "Multiomics",
+    "Proteomics",
+    "Metabolomics"
+  ],
+  "doi": "",
+  "submissionType": "PARTIAL",
+  "license": "Creative Commons Public Domain (CC0)",
+  "submissionDate": "2024-05-22",
+  "publicationDate": "2025-08-03",
+  "submitters": [
+    {
+      "title": "Dr",
+      "firstName": "Sameh",
+      "lastName": "Magdeldin",
+      "identifier": "2663944",
+      "affiliation": "Proteomics and Metabolomics Research Program, Basic Research Department, Children\u2019s Cancer Hospital, (CCHE-57357), Cairo 57357, Egypt",
+      "email": "proteomicslab2017@gmail.com",
+      "country": "Egypt",
+      "orcid": "",
+      "name": "Sameh Magdeldin",
+      "id": "2663944"
+    }
+  ],
+  "labPIs": [
+    {
+      "title": "Dr",
+      "firstName": "Sameh",
+      "lastName": "Magdeldin",
+      "identifier": "2915132",
+      "affiliation": "Lab head's proteomics and metabolomics program basic research 57357",
+      "email": "sameh.magdeldin@57357.org",
+      "country": "",
+      "orcid": "",
+      "name": "Sameh Magdeldin",
+      "id": "2915132"
+    }
+  ],
+  "instruments": [
+    {
+      "@type": "CvParam",
+      "cvLabel": "MS",
+      "accession": "MS:1002732",
+      "name": "Orbitrap Fusion Lumos"
+    }
+  ],
+  "softwares": [
+    {
+      "@type": "CvParam",
+      "cvLabel": "MS",
+      "accession": "MS:1000650",
+      "name": "Proteome Discoverer"
+    }
+  ],
+  "experimentTypes": [
+    {
+      "@type": "CvParam",
+      "cvLabel": "PRIDE",
+      "accession": "PRIDE:0000428",
+      "name": "Bottom-up proteomics"
+    }
+  ],
+  "quantificationMethods": [],
+  "countries": [
+    "Egypt"
+  ],
+  "sampleAttributes": [
+    {
+      "@type": "Tuple",
+      "key": {
+        "cvLabel": "EFO",
+        "accession": "EFO:0000635",
+        "name": "organism part"
+      },
+      "value": [
+        {
+          "cvLabel": "CL",
+          "accession": "CL:0000081",
+          "name": "blood cell"
+        },
+        {
+          "cvLabel": "BTO",
+          "accession": "BTO:0000131",
+          "name": "blood plasma"
+        }
+      ]
+    },
+    {
+      "@type": "Tuple",
+      "key": {
+        "cvLabel": "EFO",
+        "accession": "OBI:0100026",
+        "name": "organism"
+      },
+      "value": [
+        {
+          "cvLabel": "NEWT",
+          "accession": "NEWT:9606",
+          "name": "Homo sapiens (Human)"
+        }
+      ]
+    },
+    {
+      "@type": "Tuple",
+      "key": {
+        "cvLabel": "EFO",
+        "accession": "EFO:0000408",
+        "name": "disease"
+      },
+      "value": [
+        {
+          "cvLabel": "DOID",
+          "accession": "DOID:3247",
+          "name": "rhabdomyosarcoma"
+        }
+      ]
+    }
+  ],
+  "organisms": [
+    {
+      "@type": "CvParam",
+      "cvLabel": "NEWT",
+      "accession": "NEWT:9606",
+      "name": "Homo sapiens (human)"
+    }
+  ],
+  "organismParts": [
+    {
+      "@type": "CvParam",
+      "cvLabel": "CL",
+      "accession": "CL:0000081",
+      "name": "Blood cell"
+    },
+    {
+      "@type": "CvParam",
+      "cvLabel": "BTO",
+      "accession": "BTO:0000131",
+      "name": "Blood plasma"
+    }
+  ],
+  "diseases": [
+    {
+      "@type": "CvParam",
+      "cvLabel": "DOID",
+      "accession": "DOID:3247",
+      "name": "Rhabdomyosarcoma"
+    }
+  ],
+  "references": [
+    {
+      "referenceLine": "Osama A, Karam A, Atef A, Arafat M, Afifi RW, Mokhtar M, Abdelmoneim TK, Ramzy A, El Nadi E, Salama A, Elzayat E, Magdeldin S. Integrative Multi-Omics Profiling of Rhabdomyosarcoma Subtypes Reveals Distinct Molecular Pathways and Biomarker Signatures. Cells. 2025 14(14):1115",
+      "pubmedID": 40710368,
+      "doi": "10.3390/cells14141115"
+    }
+  ],
+  "identifiedPTMStrings": [
+    {
+      "@type": "CvParam",
+      "cvLabel": "PRIDE",
+      "accession": "PRIDE:0000398",
+      "name": "No PTMs are included in the dataset"
+    }
+  ],
+  "totalFileDownloads": 2098
+}

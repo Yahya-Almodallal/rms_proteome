@@ -3,6 +3,31 @@
 datasets:
   - id: PXD039480
     repository: ProteomeXchange/PRIDE
+    lane: surfaceome
     priority: 1
     description: "RMS cell lines + PDX + myoblast controls; membrane/surface-enriched"
+    status: active
+  - id: MSV000085836
+    repository: MassIVE
+    lane: tmt_ccle_depmap
+    priority: 2
+    description: "CCLE deep mass-spec proteomics (TMT), 375 cancer cell lines"
+    status: planned
+  - id: depmap_transcriptomics
+    repository: DepMap
+    lane: tmt_ccle_depmap
+    priority: 2
+    description: "DepMap RNA expression for RNA-protein concordance with CCLE proteomics"
+    status: planned
+  - id: PXD011967
+    repository: ProteomeXchange/PRIDE
+    lane: normal_muscle
+    priority: 3
+    description: "Normal vastus lateralis biopsies; healthy participants"
+    status: planned
+  - id: PXD034908
+    repository: ProteomeXchange/PRIDE
+    lane: normal_muscle
+    priority: 3
+    description: "Normal muscle SWATH time course; healthy participants"
     status: planned

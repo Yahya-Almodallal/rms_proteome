@@ -1,0 +1,180 @@
+{
+  "accession": "PXD042840",
+  "title": "human rhabdomyosarcoma cells LC-MSMS",
+  "additionalAttributes": [],
+  "projectDescription": "Label-free quantitative proteomics was performed to analysis the changes of protein expression between control group and PZH treated group after EV-A71 infection.",
+  "sampleProcessingProtocol": "RD cells were infected with EV-A71 (MOI=0.01) for 1 h. After 1 h of infection, the culture media was replaced with DMEM supplemented with 2% FBS and 20 \u03bcg/mL PZH or PBS for 24 h. Then the media was removed and RD cells were washed with PBS. The cells were lysed with 8M urea by sonication. The lysate was centrifuged at 12000 g for 20min at 4 \u2103 and the supernatant was collected. The protein concentration was determined by Bradford assay. Diphtheria-tetanus toxoid (DTT) was added to the protein (final concentration 5 mM) and was incubated at 37 \u2103 for 1 h. Then iodoacetamide was added to reach the final concentration 10 mM and was incubated in the dark at room temperature for 45 min. The samples were diluted with 4 volumes of 25 mM ammonium bicarbonate solution, trypsin was added in a ratio of 1 to 50 and was incubated overnight at 37 \u2103. The protein was desalted using C18 columns.   The LC-MS/MS was performed on RIGOL L-3000 HPLC system coupled to Thermo Q-Exactive HFX mass spectrometry with Nanospray Flex\u2122 (NSI) ion source (2.4 kV nebulizing gas flow, 275 \u2103). The mobile phase A (water and 0.1% formic acid) and phase B (80% acetone and 0.1% formic acid) was prepared. The sample was dissolved in phase A and eluted from a 12 cm x 150 \u03bcm ID C18 column at a flow rate of 600 nL/min. The data-dependent acquisition mode was selected with full scan ranging from m/z 350 to 1500. The resolution of MS1 was 120000 (200 m/z) and the automatic gain control (AGC) target value was 3\u00d7106. The top 40 parent ions with high ionic strength were fragmented by Higher-energy C-trap dissociation (HCD) at a collision energy of 27%, with resolution of 15000 (200 m/z) and an AGC target value of 5\u00d7104 for MS2.",
+  "dataProcessingProtocol": "The result data was processed by Proteome Discoverer 2.4 and protein database was from Uniprot. The search parameters are set as follows: Enzyme (Trypsin), Static Modification (Carbamidomethyl(C)), Dynamic Modification (M Oxidation\uff0815.995Da\uff09\uff1bAcetyl (Protein N-terminal)), Precursor ion mass tolerance (\u00b1 15ppm), Fragment ion mass tolerance (\u00b1 0.02Da) and Max Missed Cleavages (2).",
+  "projectTags": [],
+  "keywords": [
+    "Human rhabdomyosarcoma cells",
+    "Lc-msms"
+  ],
+  "doi": "",
+  "submissionType": "PARTIAL",
+  "license": "Creative Commons Public Domain (CC0)",
+  "submissionDate": "2023-06-09",
+  "publicationDate": "2023-10-18",
+  "submitters": [
+    {
+      "title": "Miss",
+      "firstName": "Fenbei",
+      "lastName": "Chen",
+      "identifier": "2767992",
+      "affiliation": "Institute of Medical Biotechnology,Chinese Academy of Medical Sciences",
+      "email": "decibelc@foxmail.com",
+      "country": "China",
+      "orcid": "",
+      "name": "Fenbei Chen",
+      "id": "2767992"
+    }
+  ],
+  "labPIs": [
+    {
+      "title": "Dr",
+      "firstName": "Wang",
+      "lastName": "yanxiang",
+      "identifier": "2583177",
+      "affiliation": "Institute of Medicinal Biotechnology, Chinese Academy of Medical Sciences and Peking Union Medical College, 1 Tiantan xili, Beijing 100050, China",
+      "email": "wangyanxiang@imb.pumc.edu.cn",
+      "country": "",
+      "orcid": "",
+      "name": "Wang yanxiang",
+      "id": "2583177"
+    }
+  ],
+  "instruments": [
+    {
+      "@type": "CvParam",
+      "cvLabel": "MS",
+      "accession": "MS:1002523",
+      "name": "Q Exactive HF"
+    }
+  ],
+  "softwares": [
+    {
+      "@type": "CvParam",
+      "cvLabel": "MS",
+      "accession": "MS:1000650",
+      "name": "Proteome Discoverer"
+    }
+  ],
+  "experimentTypes": [
+    {
+      "@type": "CvParam",
+      "cvLabel": "PRIDE",
+      "accession": "PRIDE:0000429",
+      "name": "Shotgun proteomics"
+    }
+  ],
+  "quantificationMethods": [
+    {
+      "@type": "CvParam",
+      "cvLabel": "PRIDE",
+      "accession": "PRIDE:0000312",
+      "name": "Label free"
+    }
+  ],
+  "countries": [
+    "China"
+  ],
+  "sampleAttributes": [
+    {
+      "@type": "Tuple",
+      "key": {
+        "cvLabel": "EFO",
+        "accession": "EFO:0000635",
+        "name": "organism part"
+      },
+      "value": [
+        {
+          "cvLabel": "BTO",
+          "accession": "BTO:0000214",
+          "name": "cell culture"
+        },
+        {
+          "cvLabel": "CL",
+          "accession": "CL:0000002",
+          "name": "permanent cell line cell"
+        }
+      ]
+    },
+    {
+      "@type": "Tuple",
+      "key": {
+        "cvLabel": "EFO",
+        "accession": "OBI:0100026",
+        "name": "organism"
+      },
+      "value": [
+        {
+          "cvLabel": "NEWT",
+          "accession": "NEWT:9606",
+          "name": "Homo sapiens (Human)"
+        }
+      ]
+    },
+    {
+      "@type": "Tuple",
+      "key": {
+        "cvLabel": "EFO",
+        "accession": "EFO:0000408",
+        "name": "disease"
+      },
+      "value": [
+        {
+          "cvLabel": "DOID",
+          "accession": "DOID:10881",
+          "name": "hand",
+          "value": "foot and mouth disease"
+        }
+      ]
+    }
+  ],
+  "organisms": [
+    {
+      "@type": "CvParam",
+      "cvLabel": "NEWT",
+      "accession": "NEWT:9606",
+      "name": "Homo sapiens (human)"
+    }
+  ],
+  "organismParts": [
+    {
+      "@type": "CvParam",
+      "cvLabel": "CL",
+      "accession": "CL:0000002",
+      "name": "Permanent cell line cell"
+    },
+    {
+      "@type": "CvParam",
+      "cvLabel": "BTO",
+      "accession": "BTO:0000214",
+      "name": "Cell culture"
+    }
+  ],
+  "diseases": [
+    {
+      "@type": "CvParam",
+      "cvLabel": "DOID",
+      "accession": "DOID:10881",
+      "name": "Hand",
+      "value": "foot and mouth disease"
+    }
+  ],
+  "references": [
+    {
+      "pubmedID": 0,
+      "doi": "10.3389/FPHAR.2023.1251731"
+    }
+  ],
+  "identifiedPTMStrings": [
+    {
+      "@type": "CvParam",
+      "cvLabel": "PRIDE",
+      "accession": "PRIDE:0000398",
+      "name": "No PTMs are included in the dataset"
+    }
+  ],
+  "totalFileDownloads": 378
+}
