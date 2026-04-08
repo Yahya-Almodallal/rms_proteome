@@ -23,6 +23,7 @@ Recommended order on HPC:
 ```bash
 cd /users/almrb2/rms_proteome
 source hpc/env/rms_proteome_hpc.env.sh
+bash hpc/scripts/check_rms_proteome_hpc_env.sh
 bash hpc/jobs/build_download_manifests.sh
 bash hpc/jobs/preview_msv000085836_download.sh 4 8000 48:00
 bash hpc/jobs/submit_msv000085836_download.sh 4 8000 48:00
