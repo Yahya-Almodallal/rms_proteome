@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Block pushes that introduce any blob larger than 5 MB.
+#
+# Why pre-push instead of .gitignore:
+# - .gitignore cannot express "ignore by size"
+# - the push boundary is the right place to check what is actually leaving
+#   this repository
+#
+# What this hook checks:
+# - only the objects reachable from commits being pushed
+# - only files newly introduced by this push
+# - any blob strictly larger than 5 * 1024 * 1024 bytes is rejected
+
+limit_bytes=$((5 * 1024 * 1024))
+status=0
+
+while read -r local_ref local_sha remote_ref remote_sha; do
+  # Skip branch deletions.
+  if [[ "${local_sha}" == "0000000000000000000000000000000000000000" ]]; then
+    continue
+  fi
+
+  if [[ "${remote_sha}" == "0000000000000000000000000000000000000000" ]]; then
+    rev_range="${local_sha}"
+  else
+    rev_range="${remote_sha}..${local_sha}"
+  fi
+
+  # Enumerate path+blob pairs introduced by the commits in this push.
+  while IFS=$'\t' read -r meta path; do
+    [[ -z "${path:-}" ]] && continue
+
+    # Format from ls-tree --long:
+    # mode type sha size
+    blob_type="$(awk '{print $2}' <<<"${meta}")"
+    blob_sha="$(awk '{print $3}' <<<"${meta}")"
+    blob_size="$(awk '{print $4}' <<<"${meta}")"
+
+    [[ "${blob_type}" != "blob" ]] && continue
+    [[ -z "${blob_sha}" || -z "${blob_size}" || "${blob_size}" == "-" ]] && continue
+
+    if (( blob_size > limit_bytes )); then
+      printf 'Push blocked: %s is %s bytes (> %s)\n' "${path}" "${blob_size}" "${limit_bytes}" >&2
+      status=1
+    fi
+  done < <(
+    git rev-list --objects "${rev_range}" \
+      | git cat-file --batch-check='%(objectname) %(objecttype) %(objectsize) %(rest)' \
+      | awk '$2=="blob" {sha=$1; size=$3; $1=""; $2=""; $3=""; sub(/^   */, "", $0); print "100644 blob " sha " " size "\t" $0}'
+  )
+done
+
+if (( status != 0 )); then
+  cat >&2 <<'EOF'
+
+The push contains one or more files larger than 5 MB.
+Move large data outside git, reduce the file size, or use Git LFS deliberately.
+EOF
+  exit 1
+fi
+
+exit 0
