@@ -22,9 +22,8 @@ dir.create(dirname(output_png), recursive = TRUE, showWarnings = FALSE)
 # Read table exactly as-is. keep names and avoid factor conversion.
 df <- read.delim(input_tsv, sep = "\t", check.names = FALSE, stringsAsFactors = FALSE)
 
-# Target proteins requested.
-# Include AGRL2 as fallback typo alias for ADGRL2.
-targets <- c("MYMX", "MYMK", "ADGRL2", "JAM3", "L1CAM")
+# Core proteins tracked across datasets.
+targets <- c("MYMX", "MYMK", "MYOD1", "MYOG")
 
 df$matched_targets <- ifelse(is.na(df$matched_targets), "", df$matched_targets)
 df$GN <- ifelse(is.na(df$GN), "", df$GN)
@@ -34,7 +33,7 @@ has_target <- function(row_text) {
   any(targets %in% unlist(strsplit(row_text, ";", fixed = TRUE)))
 }
 
-keep <- vapply(df$matched_targets, has_target, logical(1)) | (df$GN %in% c(targets, "AGRL2"))
+keep <- vapply(df$matched_targets, has_target, logical(1)) | (df$GN %in% targets)
 sub <- df[keep, , drop = FALSE]
 
 if (nrow(sub) == 0) {
@@ -70,8 +69,7 @@ as_num <- function(x) {
 # then highest mean log2 intensity among detected replicates.
 pick_best_row <- function(gene) {
   idx <- which(vapply(sub$matched_targets, function(x) gene %in% unlist(strsplit(x, ";", fixed = TRUE)), logical(1)) |
-                 sub$GN == gene |
-                 (gene == "ADGRL2" & sub$GN == "AGRL2"))
+                 sub$GN == gene)
 
   if (length(idx) == 0) {
     return(NA_integer_)
@@ -132,9 +130,6 @@ protein_levels <- targets
 
 for (i in seq_len(nrow(selected))) {
   gene <- selected$GN[i]
-  # Normalize AGRL2 label if encountered.
-  if (gene == "AGRL2") gene <- "ADGRL2"
-
   vals <- as_num(unlist(selected[i, metric_cols, drop = TRUE]))
   samp <- sub(paste0("^", metric_prefix), "", metric_cols)
   grp <- sub("_[0-9]+$", "", samp)

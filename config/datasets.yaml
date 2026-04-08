@@ -6,28 +6,40 @@ datasets:
     lane: surfaceome
     priority: 1
     description: "RMS cell lines + PDX + myoblast controls; membrane/surface-enriched"
-    status: active
+    status: done_for_now
+  - id: PXD042840
+    repository: ProteomeXchange/PRIDE
+    lane: tmt_ccle_depmap
+    priority: 2
+    description: "RD-cell LC-MS/MS proteomics under EV-A71 infection and PZH treatment"
+    status: done_for_now
+  - id: PXD030304
+    repository: ProteomeXchange/PRIDE
+    lane: tmt_ccle_depmap
+    priority: 2
+    description: "ProCan-DepMapSanger pan-cancer proteomics atlas; reviewed and skipped for now"
+    status: reviewed_skipped_for_now
   - id: MSV000085836
     repository: MassIVE
     lane: tmt_ccle_depmap
-    priority: 2
+    priority: 3
     description: "CCLE deep mass-spec proteomics (TMT), 375 cancer cell lines"
-    status: planned
+    status: done_for_now
   - id: depmap_transcriptomics
     repository: DepMap
     lane: tmt_ccle_depmap
-    priority: 2
+    priority: 3
     description: "DepMap RNA expression for RNA-protein concordance with CCLE proteomics"
-    status: planned
+    status: active
   - id: PXD011967
     repository: ProteomeXchange/PRIDE
     lane: normal_muscle
-    priority: 3
+    priority: 9
     description: "Normal vastus lateralis biopsies; healthy participants"
-    status: planned
+    status: removed_from_active_plan
   - id: PXD034908
     repository: ProteomeXchange/PRIDE
     lane: normal_muscle
-    priority: 3
+    priority: 9
     description: "Normal muscle SWATH time course; healthy participants"
-    status: planned
+    status: removed_from_active_plan

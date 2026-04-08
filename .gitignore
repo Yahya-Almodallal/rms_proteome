@@ -1,6 +1,7 @@
 # OS/editor noise
 .DS_Store
 Thumbs.db
+.codex
 *.swp
 *.swo
 *:Zone.Identifier
@@ -36,6 +37,8 @@ data/surfaceome/**
 !data/surfaceome/**/.gitkeep
 data/tmt/**
 !data/tmt/**/.gitkeep
+data/tmt_ccle_depmap/**
+!data/tmt_ccle_depmap/**/.gitkeep
 data/normal_muscle/**
 !data/normal_muscle/**/.gitkeep
 results/**

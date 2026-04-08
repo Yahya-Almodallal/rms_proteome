@@ -24,7 +24,7 @@ from xml.etree import ElementTree as ET
 
 NS = "{http://schemas.openxmlformats.org/spreadsheetml/2006/main}"
 REL_NS = "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id"
-PRIMARY_TARGETS = {"MYMK", "MYMX", "ADGRL2", "JAM3", "L1CAM", "AGRL2"}
+PRIMARY_TARGETS = {"MYMK", "MYMX", "MYOD1", "MYOG"}
 
 
 @dataclass

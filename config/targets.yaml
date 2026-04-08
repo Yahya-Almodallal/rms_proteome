@@ -3,7 +3,6 @@
 primary_targets:
   - gene: MYMK
   - gene: MYMX
-  - gene: ADGRL2
-  - gene: JAM3
-  - gene: L1CAM
+  - gene: MYOD1
+  - gene: MYOG
 secondary_targets_source: ann.genes.sheets.csv

@@ -14,8 +14,8 @@ These paths are intentionally separated because they answer different questions 
 Scope completed so far: `PXD039480` only.
 
 - Downloaded all files listed in the pre-download manifest and checksum-verified them.
-- Extracted target rows from processed table (`proteinGroups cleaned`) for:
-  - `MYMK`, `MYMX`, `ADGRL2`, `JAM3`, `L1CAM`
+- Extracted target rows from processed table (`proteinGroups cleaned`) and plotted the core 4-protein set:
+  - `MYMK`, `MYMX`, `MYOD1`, `MYOG`
 - Generated a two-panel figure:
   - Main panel: replicate-level abundance distribution using `log2(Top3/iTop3)` style values.
   - Second panel: detection-frequency panel (to avoid hiding sparse detection of proteins like `MYMK`).
@@ -26,6 +26,44 @@ Key outputs:
 - Long-format table for plotting/statistics: `results/surfaceome_pxd039480/target_abundance_detection_itop3_long.tsv`
 - Extracted targets table: `results/surfaceome_pxd039480/targets_pxd039480_proteinGroups_cleaned.tsv`
 - Summary JSON: `results/surfaceome_pxd039480/targets_pxd039480_summary.json`
+
+Status:
+- `PXD039480` is complete for now and retained as a finished first-pass reference.
+
+## Completed small-accession check
+
+`PXD042840` is complete for now.
+
+- Dataset type: proteomics-only PRIDE accession with `RAW` and Proteome Discoverer `SEARCH` (`.msf`) files.
+- Biological context: RD cells with EV-A71 infection and PZH treatment.
+- Outcome: we generated target-support/expression-proxy summaries for `MYMK`, `MYMX`, `MYOD1`, and `MYOG`.
+- Limitation: one processed run per condition only, so this remains a small reference accession rather than a main RMS cohort resource.
+
+## Current active accession
+
+Current focus: `depmap_transcriptomics`.
+
+- Goal: establish the RNA side of the RMS-wide resource for the 4-protein analysis.
+- Scope: curated RMS cell lines, transcript expression, and RNA-protein concordance with the processed CCLE proteomics results already extracted.
+
+## Recorded limitation: MSV000085836
+
+`MSV000085836` was reviewed through the local processed DepMap harmonized CCLE/Gygi proteomics matrix.
+
+- `MYMK` and `MYMX` were not represented in the harmonized matrix columns.
+- `MYOD1` and `MYOG` were detected only in `RH-30` and `RH-41` among the 5 requested lines.
+- We are recording this as a processed-matrix limitation, not a proof of biological absence.
+- We are not going back to the raw TMT files for now because that would require a much heavier proteomics reprocessing workflow.
+
+## Reviewed and skipped for now
+
+`PXD030304` (ProCan-DepMapSanger):
+
+- We reviewed the smaller processed resources first instead of the `237 GB` PRIDE DIA-NN output.
+- In the processed harmonized/figshare matrices, `MYMK` and `MYMX` were not represented.
+- `MYOD1` and `MYOG` were present, but among the requested RMS models only `RH-41` had non-missing values for both.
+- For convenience, we did not inspect the full large PRIDE raw/search export at this stage.
+- Conclusion: useful as a noted negative/limited result, but not a priority accession for now.
 
 ## TMT path goal (next phase)
 

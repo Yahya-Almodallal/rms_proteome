@@ -4,9 +4,9 @@ Reproducible proteomics workflow starter for rhabdomyosarcoma (RMS) analysis.
 
 ## Goal
 
-1. Download and organize data for ProteomeXchange dataset `PXD039480`.
-2. Quantify evidence for `MYMK`, `MYMX`, and additional proteins encoded by genes listed in `ann.genes.sheets.csv`.
-3. Keep full provenance (pre-download file manifest + metadata) from day zero.
+1. Quantify evidence and expression for `MYMK`, `MYMX`, `MYOD1`, and `MYOG` across prioritized RMS proteomics datasets.
+2. Keep full provenance (pre-download file manifest + metadata) from day zero.
+3. Preserve completed first-pass outputs while moving incrementally across accessions.
 
 ## Why this skeleton
 
@@ -14,6 +14,13 @@ The review in `review.txt` prioritizes:
 - Starting with `PXD039480` (RMS models + myoblast controls, membrane/surface-enriched).
 - Using peptide-level evidence (critical for low-abundance membrane targets like MYMK/MYMX).
 - Building reproducible metadata early to avoid ambiguous downstream analysis.
+
+Current status:
+- `PXD039480`: done for now.
+- `PXD042840`: done for now.
+- `PXD030304`: reviewed and skipped for now.
+- `MSV000085836`: done for now, with processed-matrix limitations recorded.
+- `depmap_transcriptomics`: active.
 
 ## Repository layout
 
@@ -42,6 +49,19 @@ python3 scripts/surfaceome_pxd039480/01_build_predownload_manifest_pxd039480.py 
 
 ## Next immediate steps
 
-1. Review `metadata/surfaceome_pxd039480/download_manifest_pxd039480.tsv` before download.
-2. Build sample sheet for `PXD039480` in `metadata/samples.pxd039480.tsv`.
-3. Add first extraction script for MYMK/MYMX peptide/protein hits.
+1. Work on `depmap_transcriptomics` as the active next resource for RNA support and RNA-protein concordance.
+2. Keep `MSV000085836` as a limited processed-proteomics result: `MYMK`/`MYMX` were absent from the harmonized matrix, and raw reprocessing is deferred.
+3. Preserve `PXD039480` and `PXD042840` as completed reference accessions.
+
+## Scope note on MSV000085836
+
+For `MSV000085836`, we used the local processed DepMap harmonized CCLE/Gygi proteomics matrix as the practical first-pass resource.
+
+Result:
+- `MYMK` and `MYMX` were not present as columns in the harmonized matrix.
+- `MYOD1` and `MYOG` were detected only in `RH-30` and `RH-41` among the 5 requested lines (`A-204`, `RD`, `RH-41`, `RH-30`, `KYM-1`).
+
+Limitation:
+- this is a processed-matrix result, not a raw-file reanalysis
+- low-observability targets such as `MYMK`/`MYMX` may have been filtered out during harmonization
+- raw TMT reprocessing is deferred for now because it is a substantially heavier workflow
