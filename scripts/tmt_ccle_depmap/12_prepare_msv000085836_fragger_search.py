@@ -60,7 +60,6 @@ add_Nterm_peptide = 229.162932
 # Minimal variable modifications for a first pass.
 variable_mod_01 = 15.9949 M 3
 variable_mod_02 = 42.0106 [^ 1
-allow_multiple_variable_mods_on_residue = 0
 max_variable_mods_per_peptide = 3
 max_variable_mods_combinations = 65534
 
@@ -80,7 +79,6 @@ remove_precursor_range = -1.5 1.5
 
 # Peptide generation behavior.
 clip_nTerm_M = 1
-allow_multiple_variable_mods_on_residue = 0
 max_fragment_charge = 3
 track_zero_topN = 0
 zero_bin_accept_expect = 1
