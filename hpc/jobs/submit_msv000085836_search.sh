@@ -42,6 +42,11 @@ fi
   --fasta "${RMS_PROTEOME_FASTA}" \
   --threads "${THREADS}"
 cd "${SEARCH_ROOT}"
+# Guard against stale parameter lines on shared filesystems.
+grep -n "remove_precursor_range" msv000085836_tmt10_closed.params || true
+if grep -q -- "-1.5 1.5" msv000085836_tmt10_closed.params; then
+  sed -i 's/^remove_precursor_range.*/remove_precursor_range = 1.5/' msv000085836_tmt10_closed.params
+fi
 java -Xmx${MEM_GB}G -jar "${RMS_PROTEOME_MSFRAGGER_JAR}" msv000085836_tmt10_closed.params *.mzML
 "${RMS_PROTEOME_PHILOSOPHER_BIN}" workspace --clean
 "${RMS_PROTEOME_PHILOSOPHER_BIN}" workspace --init
