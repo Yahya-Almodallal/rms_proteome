@@ -75,7 +75,7 @@ use_topN_peaks = 150
 minimum_ratio = 0.01
 clear_mz_range = 0.0 0.0
 remove_precursor_peak = 0
-remove_precursor_range = -1.5 1.5
+remove_precursor_range = 1.5
 
 # Peptide generation behavior.
 clip_nTerm_M = 1
