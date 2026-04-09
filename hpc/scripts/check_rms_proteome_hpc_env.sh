@@ -40,6 +40,7 @@ check_tool() {
 check_tool bash
 check_tool wget
 check_tool python3
+check_tool java
 
 if command -v bsub >/dev/null 2>&1; then
   printf '[OK TOOL] %s -> %s\n' "bsub" "$(command -v bsub)"
@@ -56,6 +57,16 @@ check_file "$RMS_PROTEOME_ROOT/scripts/tmt_ccle_depmap/08_build_hpc_download_man
 check_file "$RMS_PROTEOME_ROOT/scripts/tmt_ccle_depmap/09_prepare_msv000085836_hpc_mirror.sh"
 check_file "$RMS_PROTEOME_ROOT/metadata/tmt_ccle_depmap/massive/MSV000085836_index.tsv"
 check_file "$RMS_PROTEOME_ROOT/metadata/tmt_ccle_depmap/pride/PXD030304_files.tsv"
+check_file "$RMS_PROTEOME_ROOT/scripts/tmt_ccle_depmap/12_prepare_msv000085836_fragger_search.py"
+check_file "$RMS_PROTEOME_ROOT/scripts/tmt_ccle_depmap/13_extract_msv000085836_fragger_targets.py"
+
+if [[ -n "${RMS_PROTEOME_MSFRAGGER_JAR:-}" ]]; then
+  check_file "$RMS_PROTEOME_MSFRAGGER_JAR"
+fi
+
+if [[ -n "${RMS_PROTEOME_PHILOSOPHER_BIN:-}" ]]; then
+  check_file "$RMS_PROTEOME_PHILOSOPHER_BIN"
+fi
 
 printf '\nDerived paths\n'
 printf '  RMS_PROTEOME_ROOT=%s\n' "$RMS_PROTEOME_ROOT"

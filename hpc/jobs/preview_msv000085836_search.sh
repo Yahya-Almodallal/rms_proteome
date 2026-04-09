@@ -30,8 +30,10 @@ source "${RMS_PROTEOME_HPC_DIR}/env/rms_proteome_hpc.env.sh"
 rms_proteome_load_modules || true
 cd "${RMS_PROTEOME_ROOT}"
 if command -v conda >/dev/null 2>&1; then
-  source "\$(conda info --base)/etc/profile.d/conda.sh"
-  conda activate "${RMS_PROTEOME_CONDA_ENV_NAME}"
+  if [[ "${RMS_PROTEOME_USE_CONDA}" == "1" ]]; then
+    source "\$(conda info --base)/etc/profile.d/conda.sh"
+    conda activate "${RMS_PROTEOME_CONDA_ENV_NAME}"
+  fi
 fi
 "${RMS_PROTEOME_HELPER_PYTHON}" "${RMS_PROTEOME_ROOT}/scripts/tmt_ccle_depmap/12_prepare_msv000085836_fragger_search.py" \\
   --mzml-dir "${RMS_PROTEOME_TARGET_MZML_ROOT}" \\
