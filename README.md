@@ -19,8 +19,8 @@ Current status:
 - `PXD039480`: done for now.
 - `PXD042840`: done for now.
 - `PXD030304`: reviewed and skipped for now.
-- `MSV000085836`: done for now, with processed-matrix limitations recorded.
-- `depmap_transcriptomics`: active.
+- `MSV000085836`: raw reanalysis in progress (subset first).
+- `depmap_transcriptomics`: paused while raw MSV000085836 is processed.
 
 ## Repository layout
 
@@ -49,19 +49,25 @@ python3 scripts/surfaceome_pxd039480/01_build_predownload_manifest_pxd039480.py 
 
 ## Next immediate steps
 
-1. Work on `depmap_transcriptomics` as the active next resource for RNA support and RNA-protein concordance.
-2. Keep `MSV000085836` as a limited processed-proteomics result: `MYMK`/`MYMX` were absent from the harmonized matrix, and raw reprocessing is deferred.
-3. Preserve `PXD039480` and `PXD042840` as completed reference accessions.
+1. Complete raw `MSV000085836` subset reanalysis (60 files = 5 plexes).
+2. Produce protein/peptide target tables for `MYMK`, `MYMX`, `MYOD1`, `MYOG`.
+3. Resume `depmap_transcriptomics` integration once raw MSV000085836 results are stable.
 
 ## Scope note on MSV000085836
 
-For `MSV000085836`, we used the local processed DepMap harmonized CCLE/Gygi proteomics matrix as the practical first-pass resource.
+For `MSV000085836`, we started with the local processed DepMap harmonized CCLE/Gygi proteomics matrix as the practical first-pass resource.
+
+Raw reanalysis status:
+- Full raw mirror is complete on HPC scratch.
+- Target subset: 60 files (5 plexes: A-204, RD, RH-41, RH-30, KYM-1).
+- MSFragger search completed; PeptideProphet/ProteinProphet are being finalized in a clean workspace.
+- Decoy prefix in pepXML is `##` (not `rev_`).
 
 Result:
 - `MYMK` and `MYMX` were not present as columns in the harmonized matrix.
 - `MYOD1` and `MYOG` were detected only in `RH-30` and `RH-41` among the 5 requested lines (`A-204`, `RD`, `RH-41`, `RH-30`, `KYM-1`).
 
-Limitation:
+Limitations (processed-matrix phase):
 - this is a processed-matrix result, not a raw-file reanalysis
 - low-observability targets such as `MYMK`/`MYMX` may have been filtered out during harmonization
-- raw TMT reprocessing is deferred for now because it is a substantially heavier workflow
+ 

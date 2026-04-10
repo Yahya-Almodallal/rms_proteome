@@ -26,6 +26,9 @@ __pycache__/
 *.sqMass
 *.tmp
 
+# Tool bundles
+MSFragger-*.zip
+
 # Keep folder structure but avoid tracking bulky contents
 data/raw/**
 !data/raw/**/.gitkeep
