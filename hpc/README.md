@@ -32,6 +32,7 @@ bash hpc/jobs/build_msv000085836_target_subset.sh
 bash hpc/jobs/stage_msv000085836_target_subset.sh
 bash hpc/jobs/preview_msv000085836_search.sh 8 96 48:00
 bash hpc/jobs/submit_msv000085836_search.sh 8 96 48:00
+bash hpc/jobs/submit_msv000085836_philosopher.sh 4 24 12:00
 ```
 
 Current job scope:
@@ -39,6 +40,7 @@ Current job scope:
 - `PXD030304`: manifest generation only for now
 - `MSV000085836` target subset: local manifest + symlink staging for the 5 plexes of interest
 - `MSV000085836` target subset search: first-pass closed TMT10 identification search
+- `MSV000085836` target subset philosopher: runs PeptideProphet/ProteinProphet/Report in a clean workspace
 
 Important note:
 - the actual large files should land under `${RMS_PROTEOME_DOWNLOADS_ROOT}`
