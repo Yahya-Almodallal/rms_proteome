@@ -36,6 +36,7 @@ from pathlib import Path
 DEFAULT_TSV = "/scratch/almrb2/rms.omics/proteome/ProCan-DepMapSanger_DIANN_output.tsv"
 DEFAULT_MANIFEST = "metadata/tmt_ccle_depmap/pride/PXD030304_files.tsv"
 DEFAULT_SEARCH_COLUMNS = ["File.Name", "Run"]
+FAST_PATH_COLUMNS = ["File.Name", "Run"]
 
 
 @dataclass
@@ -99,6 +100,12 @@ def parse_args() -> argparse.Namespace:
         default="",
         help="Optional prefix for writing .runs.tsv, .archives.tsv, and .wget.txt outputs.",
     )
+    ap.add_argument(
+        "--progress-every",
+        type=int,
+        default=2_000_000,
+        help="Print a progress update to stderr every N data rows. Use 0 to disable.",
+    )
     return ap.parse_args()
 
 
@@ -140,30 +147,50 @@ def infer_archive_name(run_name: str) -> str:
     return ""
 
 
-def stream_run_matches(
+def maybe_report_progress(
+    line_no: int,
+    counts: Counter[str],
+    progress_every: int,
+) -> None:
+    if progress_every <= 0 or line_no % progress_every != 0:
+        return
+    matched_rows = sum(counts.values())
+    unique_runs = len(counts)
+    print(
+        f"[progress] scanned_rows={line_no:,} matched_rows={matched_rows:,} unique_runs={unique_runs:,}",
+        file=sys.stderr,
+        flush=True,
+    )
+
+
+def stream_run_matches_fast_path(
     diann_tsv: Path,
-    search_columns: list[str],
     literal_terms: list[str],
     regex_terms: list[re.Pattern[str]],
+    progress_every: int,
 ) -> dict[str, RunSummary]:
     counts: Counter[str] = Counter()
     first_file_name: dict[str, str] = {}
 
     with diann_tsv.open("r", encoding="utf-8", newline="") as handle:
-        reader = csv.DictReader(handle, delimiter="\t")
-        for row in reader:
-            search_text = build_search_text(row, search_columns)
-            if not row_matches(search_text, literal_terms, regex_terms):
+        next(handle)
+        for line_no, raw_line in enumerate(handle, start=1):
+            parts = raw_line.rstrip("\n").split("\t", 2)
+            if len(parts) < 2:
+                maybe_report_progress(line_no, counts, progress_every)
                 continue
 
-            run_name = row.get("Run", "").strip()
-            file_name = row.get("File.Name", "").strip()
-            if not run_name:
-                continue
+            file_name = parts[0].strip()
+            run_name = parts[1].strip()
+            search_text = f"{file_name}\t{run_name}"
 
-            counts[run_name] += 1
-            if run_name not in first_file_name:
-                first_file_name[run_name] = file_name
+            if row_matches(search_text, literal_terms, regex_terms):
+                if run_name:
+                    counts[run_name] += 1
+                    if run_name not in first_file_name:
+                        first_file_name[run_name] = file_name
+
+            maybe_report_progress(line_no, counts, progress_every)
 
     summaries: dict[str, RunSummary] = {}
     for run_name, matched_rows in counts.items():
@@ -174,6 +201,88 @@ def stream_run_matches(
             inferred_archive=infer_archive_name(run_name),
         )
     return summaries
+
+
+def stream_run_matches_generic(
+    diann_tsv: Path,
+    header: list[str],
+    search_columns: list[str],
+    literal_terms: list[str],
+    regex_terms: list[re.Pattern[str]],
+    progress_every: int,
+) -> dict[str, RunSummary]:
+    counts: Counter[str] = Counter()
+    first_file_name: dict[str, str] = {}
+
+    search_indexes = [header.index(col) for col in search_columns]
+    run_idx = header.index("Run")
+    file_idx = header.index("File.Name")
+
+    with diann_tsv.open("r", encoding="utf-8", newline="") as handle:
+        next(handle)
+        for line_no, raw_line in enumerate(handle, start=1):
+            parts = raw_line.rstrip("\n").split("\t")
+
+            selected = []
+            for idx in search_indexes:
+                selected.append(parts[idx] if idx < len(parts) else "")
+            search_text = "\t".join(selected)
+
+            if row_matches(search_text, literal_terms, regex_terms):
+                run_name = parts[run_idx].strip() if run_idx < len(parts) else ""
+                file_name = parts[file_idx].strip() if file_idx < len(parts) else ""
+                if run_name:
+                    counts[run_name] += 1
+                    if run_name not in first_file_name:
+                        first_file_name[run_name] = file_name
+
+            maybe_report_progress(line_no, counts, progress_every)
+
+    summaries: dict[str, RunSummary] = {}
+    for run_name, matched_rows in counts.items():
+        summaries[run_name] = RunSummary(
+            run=run_name,
+            file_name=first_file_name.get(run_name, ""),
+            matched_rows=matched_rows,
+            inferred_archive=infer_archive_name(run_name),
+        )
+    return summaries
+
+
+def stream_run_matches(
+    diann_tsv: Path,
+    header: list[str],
+    search_columns: list[str],
+    literal_terms: list[str],
+    regex_terms: list[re.Pattern[str]],
+    progress_every: int,
+) -> dict[str, RunSummary]:
+    if search_columns == FAST_PATH_COLUMNS and header[:2] == FAST_PATH_COLUMNS:
+        print(
+            "[mode] fast path: scanning only File.Name and Run",
+            file=sys.stderr,
+            flush=True,
+        )
+        return stream_run_matches_fast_path(
+            diann_tsv=diann_tsv,
+            literal_terms=literal_terms,
+            regex_terms=regex_terms,
+            progress_every=progress_every,
+        )
+
+    print(
+        "[mode] generic path: scanning requested columns via tab splitting",
+        file=sys.stderr,
+        flush=True,
+    )
+    return stream_run_matches_generic(
+        diann_tsv=diann_tsv,
+        header=header,
+        search_columns=search_columns,
+        literal_terms=literal_terms,
+        regex_terms=regex_terms,
+        progress_every=progress_every,
+    )
 
 
 def load_manifest(path: Path) -> dict[str, dict[str, str]]:
@@ -304,7 +413,14 @@ def main() -> None:
     literal_terms, regex_terms = compile_patterns(args.terms, args.regex)
 
     manifest_rows = load_manifest(manifest_tsv)
-    run_summaries = stream_run_matches(diann_tsv, search_columns, literal_terms, regex_terms)
+    run_summaries = stream_run_matches(
+        diann_tsv=diann_tsv,
+        header=header,
+        search_columns=search_columns,
+        literal_terms=literal_terms,
+        regex_terms=regex_terms,
+        progress_every=args.progress_every,
+    )
     run_rows = build_run_rows(run_summaries, manifest_rows, args.min_run_hits)
     archive_rows = build_archive_rows(run_rows, manifest_rows)
 
